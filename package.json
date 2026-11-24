@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently -n fe,be -c cyan,green \"pnpm --filter frontend dev\" \"pnpm --filter backend dev\"",
+    "seed": "node backend/seed_demo.cjs",
     "dev:frontend": "pnpm --filter frontend dev",
     "dev:server": "pnpm --filter backend dev",
     "build": "pnpm --filter frontend build",

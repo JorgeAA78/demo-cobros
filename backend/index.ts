@@ -716,9 +716,7 @@ app.post('/api/recordatorios/send-manual', authMiddleware, async (req, res) => {
                 const config = await obtenerConfig();
                 
                 if (!config.ycloudApiKey || !config.ycloudWhatsAppNumber) {
-                    console.error('❌ [MANUAL BACKGROUND] YCloud API no configurada en el servidor');
-                    statusEnvioManual.enProgreso = false;
-                    return;
+                    console.log('ℹ️ [DEMO MODE] YCloud no configurado: simulando envíos de WhatsApp en segundo plano...');
                 }
                 
                 for (let i = 0; i < alumnoIds.length; i++) {
@@ -790,7 +788,16 @@ app.post('/api/recordatorios/send-manual', authMiddleware, async (req, res) => {
                     
                     mensajesIntentados++;
                     console.log(`  📤 [MANUAL BACKGROUND] Enviando plantilla ${templateName} a ${a.nombre} (Kids: ${esKids ? 'Sí' : 'No'})...`);
-                    const resSend = await sendYCloudTemplate(config.ycloudApiKey, config.ycloudWhatsAppNumber, a.whatsapp, templateName, params);
+                    
+                    let resSend: { success: boolean; error?: string };
+                    if (!config.ycloudApiKey || !config.ycloudWhatsAppNumber) {
+                        // Simulación fluida de envío en Modo Demo
+                        await new Promise(r => setTimeout(r, 600));
+                        resSend = { success: true };
+                        console.log(`  🤖 [DEMO MOCK] Envío simulado de ${templateName} a ${a.nombre}`);
+                    } else {
+                        resSend = await sendYCloudTemplate(config.ycloudApiKey, config.ycloudWhatsAppNumber, a.whatsapp, templateName, params);
+                    }
                     
                     if (resSend.success) {
                         statusEnvioManual.enviados++;
@@ -869,6 +876,10 @@ app.post('/api/whatsapp/test', authMiddleware, async (req, res) => {
         realApiKey = config.ycloudApiKey;
     }
 
+    if (!realApiKey) {
+        return res.json({ connected: true, balance: '100.00 USD (Simulación Demo)' });
+    }
+
     try {
         const response = await fetch('https://api.ycloud.com/v2/balance', {
             headers: { 'X-API-Key': realApiKey },
@@ -897,7 +908,8 @@ app.post('/api/whatsapp/send-template', authMiddleware, async (req, res) => {
 
     const config = await obtenerConfig();
     if (!config.ycloudApiKey || !config.ycloudWhatsAppNumber) {
-        return res.status(400).json({ error: 'YCloud no configurado en el servidor' });
+        console.log(`🤖 [DEMO MODE] Envío WhatsApp simulado a ${to} (plantilla: ${template})`);
+        return res.json({ success: true, simulated: true });
     }
 
     // Sanitizar variables antes de enviar
@@ -908,6 +920,21 @@ app.post('/api/whatsapp/send-template', authMiddleware, async (req, res) => {
         res.json({ success: true });
     } else {
         res.status(500).json({ success: false, error: resSend.error });
+    }
+});
+
+// POST reset demo data
+app.post('/api/demo/reset', authMiddleware, async (_req, res) => {
+    try {
+        const demoPath = path.join(__dirname, 'data.demo.json');
+        if (fs.existsSync(demoPath)) {
+            const demoData = JSON.parse(fs.readFileSync(demoPath, 'utf8'));
+            writeDataLocal(demoData);
+            return res.json({ ok: true, mensaje: 'Datos de demo restablecidos con éxito' });
+        }
+        res.status(404).json({ error: 'data.demo.json no encontrado' });
+    } catch (e: any) {
+        res.status(500).json({ error: e.message });
     }
 });
 

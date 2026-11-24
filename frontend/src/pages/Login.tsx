@@ -65,6 +65,30 @@ export default function Login() {
                 <form onSubmit={handleSubmit} className="auth-form">
                     <h2>Iniciar Sesión</h2>
 
+                    <div style={{
+                        background: 'rgba(34, 197, 94, 0.1)',
+                        border: '1px solid rgba(34, 197, 94, 0.3)',
+                        borderRadius: 8,
+                        padding: '12px',
+                        marginBottom: '16px',
+                        textAlign: 'center'
+                    }}>
+                        <p style={{ margin: '0 0 8px 0', fontSize: '0.85rem', color: '#86efac' }}>
+                            🎮 <strong>Entorno de Demostración</strong><br/>
+                            Usuario: <code>demo@cobros.com</code> | Clave: <code>demo123</code>
+                        </p>
+                        <button
+                            type="button"
+                            className="btn btn-secondary btn-sm"
+                            style={{ width: '100%', fontSize: '0.85rem', padding: '6px' }}
+                            onClick={() => {
+                                setFormData({ email: 'demo@cobros.com', password: 'demo123' });
+                            }}
+                        >
+                            ⚡ Cargar credenciales Demo
+                        </button>
+                    </div>
+
                     {error && (
                         <div className="auth-error">
                             <span>⚠️</span> {error}

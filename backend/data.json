@@ -1,233 +1,656 @@
 {
-  "alumnos": [],
-  "pagos": [],
+  "alumnos": [
+    {
+      "id": "100001",
+      "nombre": "Lucas Benítez",
+      "whatsapp": "5491133330001",
+      "plan": "libre",
+      "cuota": 35000,
+      "diaVencimiento": 10,
+      "estado": "activo",
+      "categoria": "adulto",
+      "nivel": "azul",
+      "notas": "Competidor",
+      "fechaRegistro": "2026-02-10T12:00:00Z"
+    },
+    {
+      "id": "100002",
+      "nombre": "Martín Palermo",
+      "whatsapp": "5491133330002",
+      "plan": "libre",
+      "cuota": 35000,
+      "diaVencimiento": 10,
+      "estado": "activo",
+      "categoria": "adulto",
+      "nivel": "morado",
+      "notas": "Turno Noche",
+      "fechaRegistro": "2026-01-15T12:00:00Z"
+    },
+    {
+      "id": "100003",
+      "nombre": "Camila Rodríguez",
+      "whatsapp": "5491133330003",
+      "plan": "3x",
+      "cuota": 28000,
+      "diaVencimiento": 5,
+      "estado": "activo",
+      "categoria": "adulto",
+      "nivel": "blanco",
+      "notas": "Lunes, Miércoles y Viernes",
+      "fechaRegistro": "2026-03-01T12:00:00Z"
+    },
+    {
+      "id": "100004",
+      "nombre": "Nicolás Fernández",
+      "whatsapp": "5491133330004",
+      "plan": "libre",
+      "cuota": 35000,
+      "diaVencimiento": 10,
+      "estado": "activo",
+      "categoria": "adulto",
+      "nivel": "azul",
+      "notas": "",
+      "fechaRegistro": "2026-02-20T12:00:00Z"
+    },
+    {
+      "id": "100005",
+      "nombre": "Sofía Martínez",
+      "whatsapp": "5491133330005",
+      "plan": "3x",
+      "cuota": 28000,
+      "diaVencimiento": 5,
+      "estado": "activo",
+      "categoria": "adulto",
+      "nivel": "blanco",
+      "notas": "",
+      "fechaRegistro": "2026-04-05T12:00:00Z"
+    },
+    {
+      "id": "100006",
+      "nombre": "Agustín Romero",
+      "whatsapp": "5491133330006",
+      "plan": "libre",
+      "cuota": 35000,
+      "diaVencimiento": 10,
+      "estado": "activo",
+      "categoria": "adulto",
+      "nivel": "marron",
+      "notas": "Instructor asistente",
+      "fechaRegistro": "2025-11-10T12:00:00Z"
+    },
+    {
+      "id": "100007",
+      "nombre": "Valeria Gómez",
+      "whatsapp": "5491133330007",
+      "plan": "3x",
+      "cuota": 28000,
+      "diaVencimiento": 5,
+      "estado": "activo",
+      "categoria": "adulto",
+      "nivel": "azul",
+      "notas": "",
+      "fechaRegistro": "2026-05-12T12:00:00Z"
+    },
+    {
+      "id": "100008",
+      "nombre": "Mateo Morales",
+      "whatsapp": "5491133330008",
+      "plan": "3x",
+      "cuota": 25000,
+      "diaVencimiento": 10,
+      "estado": "activo",
+      "categoria": "kids",
+      "edad": 9,
+      "tutor": "Carla Morales (Madre)",
+      "nivel": "gris",
+      "notas": "Kids Grupo B",
+      "fechaRegistro": "2026-03-15T12:00:00Z"
+    },
+    {
+      "id": "100009",
+      "nombre": "Benjamín Silva",
+      "whatsapp": "5491133330009",
+      "plan": "libre",
+      "cuota": 30000,
+      "diaVencimiento": 5,
+      "estado": "activo",
+      "categoria": "kids",
+      "edad": 11,
+      "tutor": "Roberto Silva (Padre)",
+      "nivel": "amarillo",
+      "notas": "Kids Avanzado",
+      "fechaRegistro": "2026-02-18T12:00:00Z"
+    },
+    {
+      "id": "100010",
+      "nombre": "Mía Herrera",
+      "whatsapp": "5491133330010",
+      "plan": "3x",
+      "cuota": 25000,
+      "diaVencimiento": 10,
+      "estado": "activo",
+      "categoria": "kids",
+      "edad": 7,
+      "tutor": "Mariana Herrera (Madre)",
+      "nivel": "blanco",
+      "notas": "Kids Inicial",
+      "fechaRegistro": "2026-06-01T12:00:00Z"
+    },
+    {
+      "id": "100011",
+      "nombre": "Facundo Torres",
+      "whatsapp": "5491133330011",
+      "plan": "libre",
+      "cuota": 35000,
+      "diaVencimiento": 10,
+      "estado": "activo",
+      "categoria": "adulto",
+      "nivel": "blanco",
+      "notas": "",
+      "fechaRegistro": "2026-07-10T12:00:00Z"
+    },
+    {
+      "id": "100012",
+      "nombre": "Luciana Navarro",
+      "whatsapp": "5491133330012",
+      "plan": "3x",
+      "cuota": 28000,
+      "diaVencimiento": 5,
+      "estado": "activo",
+      "categoria": "adulto",
+      "nivel": "azul",
+      "notas": "",
+      "fechaRegistro": "2026-03-22T12:00:00Z"
+    },
+    {
+      "id": "100013",
+      "nombre": "Joaquín Castro",
+      "whatsapp": "5491133330013",
+      "plan": "libre",
+      "cuota": 35000,
+      "diaVencimiento": 10,
+      "estado": "activo",
+      "categoria": "adulto",
+      "nivel": "blanco",
+      "notas": "",
+      "fechaRegistro": "2026-08-01T12:00:00Z"
+    },
+    {
+      "id": "100014",
+      "nombre": "Thiago Rossi",
+      "whatsapp": "5491133330014",
+      "plan": "3x",
+      "cuota": 25000,
+      "diaVencimiento": 5,
+      "estado": "activo",
+      "categoria": "kids",
+      "edad": 8,
+      "tutor": "Esteban Rossi (Padre)",
+      "nivel": "gris",
+      "notas": "",
+      "fechaRegistro": "2026-04-10T12:00:00Z"
+    },
+    {
+      "id": "100015",
+      "nombre": "Gonzalo Peralta",
+      "whatsapp": "5491133330015",
+      "plan": "libre",
+      "cuota": 35000,
+      "diaVencimiento": 10,
+      "estado": "activo",
+      "categoria": "adulto",
+      "nivel": "negro",
+      "notas": "Cinturón Negro",
+      "fechaRegistro": "2025-01-10T12:00:00Z"
+    }
+  ],
+  "pagos": [
+    {
+      "id": "p-9-100001",
+      "alumnoId": "100001",
+      "mes": 9,
+      "anio": 2026,
+      "monto": 35000,
+      "estado": "pagado",
+      "fechaPago": "2026-09-02T15:30:00Z"
+    },
+    {
+      "id": "p-9-100002",
+      "alumnoId": "100002",
+      "mes": 9,
+      "anio": 2026,
+      "monto": 35000,
+      "estado": "pagado",
+      "fechaPago": "2026-09-03T15:30:00Z"
+    },
+    {
+      "id": "p-9-100003",
+      "alumnoId": "100003",
+      "mes": 9,
+      "anio": 2026,
+      "monto": 28000,
+      "estado": "pagado",
+      "fechaPago": "2026-09-04T15:30:00Z"
+    },
+    {
+      "id": "p-9-100004",
+      "alumnoId": "100004",
+      "mes": 9,
+      "anio": 2026,
+      "monto": 35000,
+      "estado": "pagado",
+      "fechaPago": "2026-09-05T15:30:00Z"
+    },
+    {
+      "id": "p-9-100005",
+      "alumnoId": "100005",
+      "mes": 9,
+      "anio": 2026,
+      "monto": 28000,
+      "estado": "pagado",
+      "fechaPago": "2026-09-06T15:30:00Z"
+    },
+    {
+      "id": "p-9-100006",
+      "alumnoId": "100006",
+      "mes": 9,
+      "anio": 2026,
+      "monto": 35000,
+      "estado": "pagado",
+      "fechaPago": "2026-09-07T15:30:00Z"
+    },
+    {
+      "id": "p-9-100007",
+      "alumnoId": "100007",
+      "mes": 9,
+      "anio": 2026,
+      "monto": 28000,
+      "estado": "pagado",
+      "fechaPago": "2026-09-08T15:30:00Z"
+    },
+    {
+      "id": "p-9-100008",
+      "alumnoId": "100008",
+      "mes": 9,
+      "anio": 2026,
+      "monto": 25000,
+      "estado": "pagado",
+      "fechaPago": "2026-09-09T15:30:00Z"
+    },
+    {
+      "id": "p-9-100009",
+      "alumnoId": "100009",
+      "mes": 9,
+      "anio": 2026,
+      "monto": 30000,
+      "estado": "pagado",
+      "fechaPago": "2026-09-02T15:30:00Z"
+    },
+    {
+      "id": "p-9-100010",
+      "alumnoId": "100010",
+      "mes": 9,
+      "anio": 2026,
+      "monto": 25000,
+      "estado": "pagado",
+      "fechaPago": "2026-09-03T15:30:00Z"
+    },
+    {
+      "id": "p-9-100011",
+      "alumnoId": "100011",
+      "mes": 9,
+      "anio": 2026,
+      "monto": 35000,
+      "estado": "pagado",
+      "fechaPago": "2026-09-04T15:30:00Z"
+    },
+    {
+      "id": "p-9-100012",
+      "alumnoId": "100012",
+      "mes": 9,
+      "anio": 2026,
+      "monto": 28000,
+      "estado": "pagado",
+      "fechaPago": "2026-09-05T15:30:00Z"
+    },
+    {
+      "id": "p-9-100013",
+      "alumnoId": "100013",
+      "mes": 9,
+      "anio": 2026,
+      "monto": 35000,
+      "estado": "pagado",
+      "fechaPago": "2026-09-06T15:30:00Z"
+    },
+    {
+      "id": "p-9-100014",
+      "alumnoId": "100014",
+      "mes": 9,
+      "anio": 2026,
+      "monto": 25000,
+      "estado": "pagado",
+      "fechaPago": "2026-09-07T15:30:00Z"
+    },
+    {
+      "id": "p-9-100015",
+      "alumnoId": "100015",
+      "mes": 9,
+      "anio": 2026,
+      "monto": 35000,
+      "estado": "pagado",
+      "fechaPago": "2026-09-08T15:30:00Z"
+    },
+    {
+      "id": "p-10-100001",
+      "alumnoId": "100001",
+      "mes": 10,
+      "anio": 2026,
+      "monto": 35000,
+      "estado": "pagado",
+      "fechaPago": "2026-10-02T16:00:00Z"
+    },
+    {
+      "id": "p-10-100002",
+      "alumnoId": "100002",
+      "mes": 10,
+      "anio": 2026,
+      "monto": 35000,
+      "estado": "pendiente"
+    },
+    {
+      "id": "p-10-100003",
+      "alumnoId": "100003",
+      "mes": 10,
+      "anio": 2026,
+      "monto": 28000,
+      "estado": "pagado",
+      "fechaPago": "2026-10-04T16:00:00Z"
+    },
+    {
+      "id": "p-10-100004",
+      "alumnoId": "100004",
+      "mes": 10,
+      "anio": 2026,
+      "monto": 35000,
+      "estado": "pagado",
+      "fechaPago": "2026-10-05T16:00:00Z"
+    },
+    {
+      "id": "p-10-100005",
+      "alumnoId": "100005",
+      "mes": 10,
+      "anio": 2026,
+      "monto": 28000,
+      "estado": "pagado",
+      "fechaPago": "2026-10-06T16:00:00Z"
+    },
+    {
+      "id": "p-10-100006",
+      "alumnoId": "100006",
+      "mes": 10,
+      "anio": 2026,
+      "monto": 35000,
+      "estado": "pagado",
+      "fechaPago": "2026-10-07T16:00:00Z"
+    },
+    {
+      "id": "p-10-100007",
+      "alumnoId": "100007",
+      "mes": 10,
+      "anio": 2026,
+      "monto": 28000,
+      "estado": "pagado",
+      "fechaPago": "2026-10-08T16:00:00Z"
+    },
+    {
+      "id": "p-10-100008",
+      "alumnoId": "100008",
+      "mes": 10,
+      "anio": 2026,
+      "monto": 25000,
+      "estado": "pagado",
+      "fechaPago": "2026-10-09T16:00:00Z"
+    },
+    {
+      "id": "p-10-100009",
+      "alumnoId": "100009",
+      "mes": 10,
+      "anio": 2026,
+      "monto": 30000,
+      "estado": "pagado",
+      "fechaPago": "2026-10-02T16:00:00Z"
+    },
+    {
+      "id": "p-10-100010",
+      "alumnoId": "100010",
+      "mes": 10,
+      "anio": 2026,
+      "monto": 25000,
+      "estado": "pagado",
+      "fechaPago": "2026-10-03T16:00:00Z"
+    },
+    {
+      "id": "p-10-100011",
+      "alumnoId": "100011",
+      "mes": 10,
+      "anio": 2026,
+      "monto": 35000,
+      "estado": "pagado",
+      "fechaPago": "2026-10-04T16:00:00Z"
+    },
+    {
+      "id": "p-10-100012",
+      "alumnoId": "100012",
+      "mes": 10,
+      "anio": 2026,
+      "monto": 28000,
+      "estado": "pagado",
+      "fechaPago": "2026-10-05T16:00:00Z"
+    },
+    {
+      "id": "p-10-100013",
+      "alumnoId": "100013",
+      "mes": 10,
+      "anio": 2026,
+      "monto": 35000,
+      "estado": "pendiente"
+    },
+    {
+      "id": "p-10-100014",
+      "alumnoId": "100014",
+      "mes": 10,
+      "anio": 2026,
+      "monto": 25000,
+      "estado": "pagado",
+      "fechaPago": "2026-10-07T16:00:00Z"
+    },
+    {
+      "id": "p-10-100015",
+      "alumnoId": "100015",
+      "mes": 10,
+      "anio": 2026,
+      "monto": 35000,
+      "estado": "pagado",
+      "fechaPago": "2026-10-08T16:00:00Z"
+    },
+    {
+      "id": "p-11-100001",
+      "alumnoId": "100001",
+      "mes": 11,
+      "anio": 2026,
+      "monto": 35000,
+      "estado": "pagado",
+      "fechaPago": "2026-11-02T14:20:00Z"
+    },
+    {
+      "id": "p-11-100002",
+      "alumnoId": "100002",
+      "mes": 11,
+      "anio": 2026,
+      "monto": 35000,
+      "estado": "pendiente"
+    },
+    {
+      "id": "p-11-100003",
+      "alumnoId": "100003",
+      "mes": 11,
+      "anio": 2026,
+      "monto": 28000,
+      "estado": "pagado",
+      "fechaPago": "2026-11-04T14:20:00Z"
+    },
+    {
+      "id": "p-11-100004",
+      "alumnoId": "100004",
+      "mes": 11,
+      "anio": 2026,
+      "monto": 35000,
+      "estado": "pagado",
+      "fechaPago": "2026-11-05T14:20:00Z"
+    },
+    {
+      "id": "p-11-100005",
+      "alumnoId": "100005",
+      "mes": 11,
+      "anio": 2026,
+      "monto": 28000,
+      "estado": "pendiente"
+    },
+    {
+      "id": "p-11-100006",
+      "alumnoId": "100006",
+      "mes": 11,
+      "anio": 2026,
+      "monto": 35000,
+      "estado": "pagado",
+      "fechaPago": "2026-11-07T14:20:00Z"
+    },
+    {
+      "id": "p-11-100007",
+      "alumnoId": "100007",
+      "mes": 11,
+      "anio": 2026,
+      "monto": 28000,
+      "estado": "pagado",
+      "fechaPago": "2026-11-08T14:20:00Z"
+    },
+    {
+      "id": "p-11-100008",
+      "alumnoId": "100008",
+      "mes": 11,
+      "anio": 2026,
+      "monto": 25000,
+      "estado": "pendiente"
+    },
+    {
+      "id": "p-11-100009",
+      "alumnoId": "100009",
+      "mes": 11,
+      "anio": 2026,
+      "monto": 30000,
+      "estado": "pagado",
+      "fechaPago": "2026-11-02T14:20:00Z"
+    },
+    {
+      "id": "p-11-100010",
+      "alumnoId": "100010",
+      "mes": 11,
+      "anio": 2026,
+      "monto": 25000,
+      "estado": "pendiente"
+    },
+    {
+      "id": "p-11-100011",
+      "alumnoId": "100011",
+      "mes": 11,
+      "anio": 2026,
+      "monto": 35000,
+      "estado": "pagado",
+      "fechaPago": "2026-11-04T14:20:00Z"
+    },
+    {
+      "id": "p-11-100012",
+      "alumnoId": "100012",
+      "mes": 11,
+      "anio": 2026,
+      "monto": 28000,
+      "estado": "pagado",
+      "fechaPago": "2026-11-05T14:20:00Z"
+    },
+    {
+      "id": "p-11-100013",
+      "alumnoId": "100013",
+      "mes": 11,
+      "anio": 2026,
+      "monto": 35000,
+      "estado": "pendiente"
+    },
+    {
+      "id": "p-11-100014",
+      "alumnoId": "100014",
+      "mes": 11,
+      "anio": 2026,
+      "monto": 25000,
+      "estado": "pendiente"
+    },
+    {
+      "id": "p-11-100015",
+      "alumnoId": "100015",
+      "mes": 11,
+      "anio": 2026,
+      "monto": 35000,
+      "estado": "pagado",
+      "fechaPago": "2026-11-08T14:20:00Z"
+    }
+  ],
   "config": {
-    "evolutionApiUrl": "https://n8ncurso2025-evolution-api.mos4xj.easypanel.host",
-    "evolutionApiKey": "72A073E91C8F-4781-944A-82E410E3C567",
-    "evolutionInstance": "mutantes-bjj",
-    "diaEnvio": 10,
-    "mensajePlantilla": "",
-    "datosPago": "Mutantesbjj"
+    "ycloudApiKey": "",
+    "ycloudWhatsAppNumber": "+5491122334455",
+    "diaEnvio": 5,
+    "mensajePlantilla": "¡Hola {nombre}! 👋🥋\n\nTe recordamos que la cuota de *{mes}* ya está disponible para abonar:\n\n💰 Monto: *{monto}*\n📋 Plan: *{plan}*\n\n{datos_pago}\n\n¡Te esperamos en el tatami! 💪🔥\n\n_Academia Demo - Sistema de Gestión_",
+    "datosPago": "Alias: academia.demo\na nombre de: Juan Carlos Demo (Banco Galicia)",
+    "datosPagoKids": "Alias: kids.academia.demo\na nombre de: Laura Demo (Banco Santander)"
   },
   "activity": [
     {
-      "type": "sent",
-      "message": "Recordatorios Febrero: 1 enviados, 0 fallidos",
-      "timestamp": "2026-02-28T20:11:43.110Z"
+      "type": "payment",
+      "message": "Pago recibido: Gonzalo Peralta ($35.000 - Noviembre)",
+      "timestamp": "2026-11-24T09:15:00.000Z"
+    },
+    {
+      "type": "payment",
+      "message": "Pago recibido: Lucas Benítez ($35.000 - Noviembre)",
+      "timestamp": "2026-11-23T18:40:00.000Z"
     },
     {
       "type": "sent",
-      "message": "Cobro Febrero enviado a Jorge Ariel Altamirano: $ 25.000",
-      "timestamp": "2026-02-28T20:11:16.309Z"
+      "message": "Recordatorio Noviembre enviado a Martín Palermo",
+      "timestamp": "2026-11-22T11:00:00.000Z"
+    },
+    {
+      "type": "payment",
+      "message": "Pago recibido: Benjamín Silva ($30.000 - Noviembre)",
+      "timestamp": "2026-11-21T16:20:00.000Z"
+    },
+    {
+      "type": "register",
+      "message": "Alumno registrado: Facundo Torres (Plan Libre)",
+      "timestamp": "2026-11-15T10:30:00.000Z"
     },
     {
       "type": "sent",
-      "message": "Cobro Febrero enviado a Antonella Altamirano: $ 30.000",
-      "timestamp": "2026-02-27T21:58:26.466Z"
-    },
-    {
-      "type": "sent",
-      "message": "Alumno registrado: Antonella Altamirano (Libre)",
-      "timestamp": "2026-02-27T21:56:56.272Z"
-    },
-    {
-      "type": "sent",
-      "message": "Cobro Febrero enviado a Jorge Ariel Altamirano: $ 25.000",
-      "timestamp": "2026-02-27T16:50:19.959Z"
-    },
-    {
-      "type": "sent",
-      "message": "Cobro Febrero enviado a Jorge Ariel Altamirano: $ 25.000",
-      "timestamp": "2026-02-27T16:12:15.440Z"
-    },
-    {
-      "type": "sent",
-      "message": "Configuración actualizada",
-      "timestamp": "2026-02-27T15:35:32.313Z"
-    },
-    {
-      "type": "sent",
-      "message": "Alumno registrado: Sandra Aramayo (Libre)",
-      "timestamp": "2026-02-27T12:54:13.151Z"
-    },
-    {
-      "type": "sent",
-      "message": "Recordatorios Febrero: 1 enviados, 0 fallidos",
-      "timestamp": "2026-02-27T12:49:12.943Z"
-    },
-    {
-      "type": "sent",
-      "message": "Configuración actualizada",
-      "timestamp": "2026-02-27T12:47:42.549Z"
-    },
-    {
-      "type": "sent",
-      "message": "Recordatorios Febrero: 1 enviados, 0 fallidos",
-      "timestamp": "2026-02-27T12:36:36.258Z"
-    },
-    {
-      "type": "sent",
-      "message": "Recordatorios Febrero: 1 enviados, 0 fallidos",
-      "timestamp": "2026-02-27T12:25:54.828Z"
-    },
-    {
-      "type": "sent",
-      "message": "Recordatorios Febrero: 1 enviados, 0 fallidos",
-      "timestamp": "2026-02-27T12:25:21.300Z"
-    },
-    {
-      "type": "sent",
-      "message": "Cobro Febrero enviado a Jorge Ariel Altamirano: $ 25.000",
-      "timestamp": "2026-02-27T12:23:15.575Z"
-    },
-    {
-      "type": "sent",
-      "message": "Recordatorios Febrero: 1 enviados, 0 fallidos",
-      "timestamp": "2026-02-27T12:18:55.682Z"
-    },
-    {
-      "type": "sent",
-      "message": "Recordatorios Febrero: 1 enviados, 0 fallidos",
-      "timestamp": "2026-02-27T12:04:16.681Z"
-    },
-    {
-      "type": "sent",
-      "message": "🤖 [AUTO] Recordatorios Febrero: 1 enviados, 0 fallidos",
-      "timestamp": "2026-02-27T12:00:00.052Z"
-    },
-    {
-      "type": "sent",
-      "message": "Recordatorios Febrero: 1 enviados, 0 fallidos",
-      "timestamp": "2026-02-27T11:48:15.267Z"
-    },
-    {
-      "type": "sent",
-      "message": "Configuración actualizada",
-      "timestamp": "2026-02-27T11:47:57.586Z"
-    },
-    {
-      "type": "sent",
-      "message": "Cobro Febrero enviado a Jorge Ariel Altamirano: $ 25.000",
-      "timestamp": "2026-02-27T11:47:10.475Z"
-    },
-    {
-      "type": "sent",
-      "message": "Cobro Febrero enviado a Jorge Ariel Altamirano: $ 25.000",
-      "timestamp": "2026-02-27T11:46:47.023Z"
-    },
-    {
-      "type": "sent",
-      "message": "Cobro Febrero enviado a Jorge Ariel Altamirano: $ 25.000",
-      "timestamp": "2026-02-27T11:45:45.932Z"
-    },
-    {
-      "type": "sent",
-      "message": "Configuración actualizada",
-      "timestamp": "2026-02-27T11:33:55.005Z"
-    },
-    {
-      "type": "sent",
-      "message": "Cobro Marzo enviado a Agostina  Altamirano : $ 25.000",
-      "timestamp": "2026-02-27T02:36:07.793Z"
-    },
-    {
-      "type": "sent",
-      "message": "Recordatorios Febrero: 1 enviados, 0 fallidos",
-      "timestamp": "2026-02-26T23:25:20.199Z"
-    },
-    {
-      "type": "sent",
-      "message": "Cobro Febrero enviado a Nicolas Gabriel  Geron: $ 25.000",
-      "timestamp": "2026-02-26T23:23:19.520Z"
-    },
-    {
-      "type": "sent",
-      "message": "Configuración actualizada",
-      "timestamp": "2026-02-26T23:15:24.386Z"
-    },
-    {
-      "type": "sent",
-      "message": "Recordatorios Febrero: 1 enviados, 0 fallidos",
-      "timestamp": "2026-02-26T22:19:46.301Z"
-    },
-    {
-      "type": "sent",
-      "message": "Recordatorios Febrero: 1 enviados, 0 fallidos",
-      "timestamp": "2026-02-26T22:16:41.364Z"
-    },
-    {
-      "type": "sent",
-      "message": "Cobro Febrero enviado a Gabriel Atencio: $ 25.000",
-      "timestamp": "2026-02-26T22:12:20.108Z"
-    },
-    {
-      "type": "sent",
-      "message": "Cobro Marzo enviado a Gabriel Atencio: $ 25.000",
-      "timestamp": "2026-02-26T22:10:32.287Z"
-    },
-    {
-      "type": "sent",
-      "message": "Cobro Febrero enviado a Gabriel Atencio: $ 25.000",
-      "timestamp": "2026-02-26T22:09:50.764Z"
-    },
-    {
-      "type": "sent",
-      "message": "Importados 207 alumnos desde Listado.xlsx",
-      "timestamp": "2026-02-26T21:50:45.869Z"
-    },
-    {
-      "type": "sent",
-      "message": "Cobro Febrero enviado a FLACURA: $ 30.000",
-      "timestamp": "2026-02-26T20:08:04.166Z"
-    },
-    {
-      "type": "sent",
-      "message": "Cobro Febrero enviado a DEBIL: $ 30.000",
-      "timestamp": "2026-02-26T20:06:13.057Z"
-    },
-    {
-      "type": "sent",
-      "message": "Cobro Febrero enviado a DEBIL: $ 30.000",
-      "timestamp": "2026-02-26T20:02:33.470Z"
-    },
-    {
-      "type": "sent",
-      "message": "Cobro Febrero enviado a Nico DEBIL: $ 30.000",
-      "timestamp": "2026-02-26T20:01:01.009Z"
-    },
-    {
-      "type": "sent",
-      "message": "Cobro Febrero enviado a Sofia: $ 30.000",
-      "timestamp": "2026-02-26T19:58:45.368Z"
-    },
-    {
-      "type": "sent",
-      "message": "Configuración actualizada",
-      "timestamp": "2026-02-26T19:56:30.617Z"
-    },
-    {
-      "type": "sent",
-      "message": "Configuración actualizada",
-      "timestamp": "2026-02-26T19:54:43.634Z"
-    },
-    {
-      "type": "sent",
-      "message": "Configuración actualizada",
-      "timestamp": "2026-02-26T19:54:00.858Z"
-    },
-    {
-      "type": "sent",
-      "message": "Configuración actualizada",
-      "timestamp": "2026-02-26T19:53:42.744Z"
+      "message": "Recordatorios Noviembre: 6 enviados, 0 fallidos",
+      "timestamp": "2026-11-10T09:00:00.000Z"
     }
   ],
-  "mensajesEnviados": 38,
-  "enviosRealizados": [
-    {
-      "alumnoId": "ALU-1772142645861-4-hbk3",
-      "mes": 2,
-      "anio": 2026,
-      "fecha": "2026-02-27T12:00:00.052Z"
+  "mensajesEnviados": 24,
+  "recordatoriosEnviados": {
+    "100002_11_2026": {
+      "manual": "2026-11-22T11:00:00.000Z"
+    },
+    "100005_11_2026": {
+      "primer_recordatorio": "2026-11-05T09:00:00.000Z"
     }
-  ]
+  },
+  "enviosRealizados": []
 }

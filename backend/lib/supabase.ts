@@ -13,10 +13,14 @@ dotenv.config({ path: path.join(__dirname, '..', '..', '..', '.env') });
 dotenv.config({ path: path.join(process.cwd(), '.env') });
 dotenv.config();
 
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const isDemoMode = process.env.DEMO_MODE === 'true' || process.env.USE_LOCAL_STORAGE === 'true';
 
-if (!supabaseUrl || !supabaseServiceKey) {
+const supabaseUrl = isDemoMode ? undefined : process.env.SUPABASE_URL;
+const supabaseServiceKey = isDemoMode ? undefined : process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+if (isDemoMode) {
+    console.log('🎮 [MODO DEMO ACTIVO] Usando almacenamiento JSON local aislado (Supabase desactivado).');
+} else if (!supabaseUrl || !supabaseServiceKey) {
     console.warn('⚠️ Variables de Supabase no configuradas. Usando almacenamiento local.');
     console.warn('   SUPABASE_URL:', supabaseUrl ? '✓' : '✗');
     console.warn('   SUPABASE_SERVICE_ROLE_KEY:', supabaseServiceKey ? '✓' : '✗');
