@@ -4,6 +4,7 @@ import type { Alumno, PagoMensual, AppConfig, ActivityLog, RecordatorioMap, Reco
 
 import { useAuthStore } from './authStore';
 import { API_BASE } from '../config/api';
+import demoData from '../data/demoData.json';
 
 const RECORDATORIO_TIPOS: RecordatorioTipo[] = ['manual', 'primer_recordatorio', 'segundo_recordatorio'];
 
@@ -175,9 +176,10 @@ interface StoreState {
     iniciarEnvioManual: (alumnoIds: string[], template: string, mes: number, anio: number) => Promise<{ success: boolean; error?: string }>;
     cancelarEnvioManual: () => Promise<void>;
     clearRecordatoriosMes: (mes: number, anio: number) => Promise<{ success: boolean; error?: string }>;
+    resetDemoData: () => void;
 }
 
-const DEFAULT_PLANTILLA = `¡Hola {nombre}! 👋🥋
+export const DEFAULT_PLANTILLA = `¡Hola {nombre}! 👋🥋
 
 Te recordamos que la cuota de *{mes}* está pendiente de pago:
 
@@ -193,36 +195,55 @@ _Mutantes Fight Team - Brazilian Jiu Jitsu_`;
 export const useStore = create<StoreState>()(
     persist(
         (set, get) => ({
-            alumnos: [],
-            pagos: [],
-            config: {
-                ycloudApiKey: '',
-                ycloudWhatsAppNumber: '',
-                diaEnvio: 5,
-                mensajePlantilla: DEFAULT_PLANTILLA,
-                datosPago: '',
-            },
-            activity: [],
-            mensajesEnviados: 0,
-            recordatoriosEnviados: {},
-            synced: false,
+            alumnos: (demoData.alumnos || []) as any,
+            pagos: (demoData.pagos || []) as any,
+            config: (demoData.config || {}) as any,
+            activity: (demoData.activity || []) as any,
+            mensajesEnviados: demoData.mensajesEnviados || 0,
+            recordatoriosEnviados: normalizeRecordatorios(demoData.recordatoriosEnviados),
+            synced: true,
             envioManualStatus: null,
 
             // ─── Sync with server ─────────────────────────
             syncFromServer: async () => {
-                const data = await apiGet<any>('/data');
-                if (data) {
-                    set({
-                        alumnos: data.alumnos || [],
-                        pagos: data.pagos || [],
-                        config: data.config || get().config,
-                        activity: data.activity || [],
-                        mensajesEnviados: data.mensajesEnviados || 0,
-                        recordatoriosEnviados: normalizeRecordatorios(data.recordatoriosEnviados),
-                        synced: true,
-                    });
+                try {
+                    const data = await apiGet<any>('/data');
+                    if (data && data.alumnos && data.alumnos.length > 0) {
+                        set({
+                            alumnos: data.alumnos || [],
+                            pagos: data.pagos || [],
+                            config: data.config || get().config,
+                            activity: data.activity || [],
+                            mensajesEnviados: data.mensajesEnviados || 0,
+                            recordatoriosEnviados: normalizeRecordatorios(data.recordatoriosEnviados),
+                            synced: true,
+                        });
+                    } else if (get().alumnos.length === 0) {
+                        get().resetDemoData();
+                    }
+                } catch {
+                    if (get().alumnos.length === 0) {
+                        get().resetDemoData();
+                    }
                 }
                 await get().obtenerStatusEnvioManual();
+            },
+
+            resetDemoData: () => {
+                set({
+                    alumnos: (demoData.alumnos || []) as any,
+                    pagos: (demoData.pagos || []) as any,
+                    config: {
+                        ...get().config,
+                        ...(demoData.config || {}),
+                    },
+                    activity: (demoData.activity || []) as any,
+                    mensajesEnviados: demoData.mensajesEnviados || 0,
+                    recordatoriosEnviados: normalizeRecordatorios(demoData.recordatoriosEnviados),
+                    synced: true,
+                    envioManualStatus: null,
+                });
+                apiPost('/demo/reset', {}).catch(() => {});
             },
 
             pushToServer: () => {
@@ -476,17 +497,71 @@ export const useStore = create<StoreState>()(
                     if (res.ok) {
                         await get().obtenerStatusEnvioManual();
                         return { success: true };
-                    } else {
-                        const errData = await res.json() as { error?: string };
-                        return { success: false, error: errData.error || `HTTP ${res.status}` };
                     }
-                } catch (e) {
-                    return { success: false, error: e instanceof Error ? e.message : String(e) };
+                } catch {
+                    // Backend no disponible en Vercel estático, simular envío demo
                 }
+
+                // Simulación fluida de envío de WhatsApp en Modo Demo
+                const total = alumnoIds.length;
+                const initialResultados: Record<string, 'pending' | 'sending' | 'sent' | 'error'> = {};
+                alumnoIds.forEach(id => { initialResultados[id] = 'pending'; });
+
+                set({
+                    envioManualStatus: {
+                        enProgreso: true,
+                        total,
+                        enviados: 0,
+                        fallidos: 0,
+                        alumnoActualId: alumnoIds[0] || '',
+                        resultados: initialResultados,
+                        cancelRequest: false
+                    }
+                });
+
+                const next = { ...get().recordatoriosEnviados };
+                let enviados = 0;
+
+                for (const id of alumnoIds) {
+                    if (get().envioManualStatus?.cancelRequest) break;
+                    await new Promise((r) => setTimeout(r, 400));
+                    const key = `${id}_${mes}_${anio}`;
+                    const current = next[key] || {};
+                    current.manual = new Date().toISOString();
+                    next[key] = current;
+                    enviados++;
+
+                    set({
+                        recordatoriosEnviados: { ...next },
+                        mensajesEnviados: get().mensajesEnviados + 1,
+                        envioManualStatus: {
+                            enProgreso: enviados < total,
+                            total,
+                            enviados,
+                            fallidos: 0,
+                            alumnoActualId: id,
+                            resultados: { ...(get().envioManualStatus?.resultados || {}), [id]: 'sent' },
+                            cancelRequest: false
+                        }
+                    });
+                }
+
+                get().addActivity('sent', `Recordatorios enviados (Simulación Demo): ${enviados} mensajes`);
+                setTimeout(() => {
+                    set({ envioManualStatus: null });
+                }, 2000);
+
+                return { success: true };
             },
             cancelarEnvioManual: async () => {
-                await apiPost('/recordatorios/cancel-manual', {});
-                await get().obtenerStatusEnvioManual();
+                try {
+                    await apiPost('/recordatorios/cancel-manual', {});
+                } catch {}
+                set((state) => ({
+                    envioManualStatus: state.envioManualStatus
+                        ? { ...state.envioManualStatus, cancelRequest: true, enProgreso: false }
+                        : null
+                }));
             },
             clearRecordatoriosMes: async (mes: number, anio: number) => {
                 try {
@@ -499,27 +574,21 @@ export const useStore = create<StoreState>()(
                         useAuthStore.getState().logout();
                         return { success: false, error: 'Sesión expirada' };
                     }
-                    if (res.ok) {
-                        const next = { ...get().recordatoriosEnviados };
-                        Object.keys(next).forEach((key) => {
-                            const parts = key.split('_');
-                            if (parts.length === 3) {
-                                const m = parseInt(parts[1]);
-                                const a = parseInt(parts[2]);
-                                if (m === mes && a === anio) {
-                                    delete next[key];
-                                }
-                            }
-                        });
-                        set({ recordatoriosEnviados: next });
-                        return { success: true };
-                    } else {
-                        const errData = await res.json() as { error?: string };
-                        return { success: false, error: errData.error || `HTTP ${res.status}` };
+                } catch {}
+
+                const next = { ...get().recordatoriosEnviados };
+                Object.keys(next).forEach((key) => {
+                    const parts = key.split('_');
+                    if (parts.length === 3) {
+                        const m = parseInt(parts[1]);
+                        const a = parseInt(parts[2]);
+                        if (m === mes && a === anio) {
+                            delete next[key];
+                        }
                     }
-                } catch (e) {
-                    return { success: false, error: e instanceof Error ? e.message : String(e) };
-                }
+                });
+                set({ recordatoriosEnviados: next });
+                return { success: true };
             },
         }),
         { name: 'mft-store' }

@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
+import { useStore } from '../store/useStore';
 import { API_BASE } from '../config/api';
 
 export default function Sidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
@@ -93,6 +94,7 @@ export default function Sidebar({ open, onClose }: { open: boolean; onClose: () 
                         onClick={async () => {
                             if (window.confirm('¿Reiniciar todos los alumnos y pagos de la demo al estado original?')) {
                                 try {
+                                    useStore.getState().resetDemoData();
                                     const token = useAuthStore.getState().token;
                                     await fetch(`${API_BASE}/demo/reset`, {
                                         method: 'POST',
@@ -100,10 +102,11 @@ export default function Sidebar({ open, onClose }: { open: boolean; onClose: () 
                                             'Content-Type': 'application/json',
                                             ...(token ? { 'Authorization': `Bearer ${token}` } : {})
                                         }
-                                    });
+                                    }).catch(() => {});
                                     window.location.reload();
                                 } catch (e) {
                                     console.error(e);
+                                    window.location.reload();
                                 }
                             }
                         }}
