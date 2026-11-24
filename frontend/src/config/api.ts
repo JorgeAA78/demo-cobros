@@ -1,9 +1,9 @@
-// URL oficial del backend en producción en Railway
-export const PRODUCTION_API_URL = 'https://gestion-de-cobros-mft-production.up.railway.app';
+// URL configurable vía variable de entorno VITE_API_URL (por ejemplo en Vercel)
+const envApiUrl = import.meta.env.VITE_API_URL;
 
-// En desarrollo local apunta a localhost:3001; en cualquier versión compilada (web o móvil) apunta a Railway
-export const API_URL = (import.meta as any).env?.DEV
-    ? 'http://localhost:3001'
-    : PRODUCTION_API_URL;
+// En desarrollo usa localhost:3001; en producción usa VITE_API_URL o ruta relativa /api
+export const API_URL = envApiUrl
+    ? envApiUrl.replace(/\/+$/, '')
+    : (import.meta.env.DEV ? 'http://localhost:3001' : '');
 
 export const API_BASE = `${API_URL}/api`;
